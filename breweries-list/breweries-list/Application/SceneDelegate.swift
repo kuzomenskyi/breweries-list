@@ -19,8 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: Function
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = scene as? UIWindowScene else { return }
+        window = UIWindow(windowScene: windowScene)
+        let homeScreen = Splash().view
+
+        window?.rootViewController = homeScreen
+        window?.makeKeyAndVisible()
     }
 }
 

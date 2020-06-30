@@ -18,6 +18,10 @@ class BreweriesListViewController: UIViewController, ViperView {
     // MARK: Constant
     
     // MARK: Variable
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     weak var presenter: BreweriesListPresenterProtocol!
     
     // MARK: Outlet
@@ -25,6 +29,13 @@ class BreweriesListViewController: UIViewController, ViperView {
     // MARK: View Controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     // MARK: Init

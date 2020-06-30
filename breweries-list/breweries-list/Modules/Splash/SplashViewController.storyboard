@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dFh-JR-k59">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dFh-JR-k59">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SplashViewController View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="5yw-RJ-AcC">
             <objects>
-                <viewController id="dFh-JR-k59" customClass="SplashViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dFh-JR-k59" customClass="SplashViewController" customModule="breweries_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8yS-y8-KPi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SplashViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBa-1P-Aja">
-                                <rect key="frame" x="158.5" y="323" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leprechaun" translatesAutoresizingMaskIntoConstraints="NO" id="TWe-yu-XtN">
+                                <rect key="frame" x="66" y="143" width="243" height="381"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xBa-1P-Aja" firstAttribute="centerY" secondItem="8yS-y8-KPi" secondAttribute="centerY" id="LcW-3n-VKw"/>
-                            <constraint firstItem="xBa-1P-Aja" firstAttribute="centerX" secondItem="8yS-y8-KPi" secondAttribute="centerX" id="aOS-b1-OR3"/>
+                            <constraint firstItem="TWe-yu-XtN" firstAttribute="width" secondItem="8yS-y8-KPi" secondAttribute="width" multiplier="0.648" id="4Ev-ey-IMx"/>
+                            <constraint firstItem="TWe-yu-XtN" firstAttribute="centerY" secondItem="pQc-7P-Kzz" secondAttribute="centerY" id="8SS-em-OwR"/>
+                            <constraint firstItem="TWe-yu-XtN" firstAttribute="centerX" secondItem="pQc-7P-Kzz" secondAttribute="centerX" id="Mg8-lO-ieg"/>
+                            <constraint firstItem="TWe-yu-XtN" firstAttribute="height" secondItem="8yS-y8-KPi" secondAttribute="height" multiplier="0.571214" id="mEa-j4-IXq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pQc-7P-Kzz"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="TWe-yu-XtN" id="mKF-bd-kXj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wH-bz-g6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-250" y="93"/>
+            <point key="canvasLocation" x="-250.40000000000001" y="92.203898050974516"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="leprechaun" width="309" height="502"/>
+    </resources>
 </document>

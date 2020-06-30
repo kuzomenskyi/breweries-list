@@ -242,6 +242,7 @@ struct _R: Rswift.Validatable {
       let name = "SplashViewController"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "leprechaun", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'leprechaun' is used in storyboard 'SplashViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

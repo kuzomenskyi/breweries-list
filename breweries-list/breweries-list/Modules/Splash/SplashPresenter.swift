@@ -9,13 +9,14 @@
 import Foundation
 import AppusViper
 
-protocol SplashPresenterProtocol: class {
-
+protocol SplashPresenterProtocol: IViewLifeCycle {
+    var animationTimeInterval: TimeInterval { get }
 }
 
 final class SplashPresenter: ViperPresenter {
     
     // MARK: Constant
+    let animationTimeInterval: TimeInterval = 2
     
     // MARK: Variable
     weak var view: SplashViewProtocol!
@@ -25,6 +26,11 @@ final class SplashPresenter: ViperPresenter {
     // MARK: Action
     
     // MARK: Function
+    func viewDidAppear() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationTimeInterval) { [unowned self] in
+            self.router.showMain()
+        }
+    }
 }
 
 extension SplashPresenter: SplashPresenterProtocol {
