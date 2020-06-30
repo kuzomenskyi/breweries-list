@@ -1,0 +1,39 @@
+PODS:
+  - AppusViper (2.0.0)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+
+DEPENDENCIES:
+  - AppusViper (from `https://gitlab.appus.software/ios/VIPER-template.git`, branch `viper-2`)
+  - R.swift
+  - SQLite.swift (~> 0.12.0)
+
+SPEC REPOS:
+  trunk:
+    - R.swift
+    - R.swift.Library
+    - SQLite.swift
+
+EXTERNAL SOURCES:
+  AppusViper:
+    :branch: viper-2
+    :git: https://gitlab.appus.software/ios/VIPER-template.git
+
+CHECKOUT OPTIONS:
+  AppusViper:
+    :commit: 12feafaa9f13af431b63846687a37455c3fbafd2
+    :git: https://gitlab.appus.software/ios/VIPER-template.git
+
+SPEC CHECKSUMS:
+  AppusViper: e63203b379225eb0ac8c19dfcd28b9910de3b63f
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+
+PODFILE CHECKSUM: 8419ae1df6c88306070571dbfeb950c479eced39
+
+COCOAPODS: 1.9.3

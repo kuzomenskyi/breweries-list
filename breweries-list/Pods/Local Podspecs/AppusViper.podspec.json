@@ -1,0 +1,19 @@
+{
+  "name": "AppusViper",
+  "version": "2.0.0",
+  "license": "MIT",
+  "summary": "Custom VIPER implementation used @Appus",
+  "homepage": "https://gitlab.appus.software/ios/VIPER-template",
+  "social_media_url": "https://twitter.com/appus_studio",
+  "authors": {
+    "Appus Studio LP": "https://appus.software/"
+  },
+  "source": {
+    "git": "https://gitlab.appus.software/ios/VIPER-template",
+    "tag": "2.0.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "VIPER/*.swift"
+}
