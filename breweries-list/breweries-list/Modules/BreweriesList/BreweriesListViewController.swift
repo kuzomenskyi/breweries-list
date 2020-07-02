@@ -37,6 +37,7 @@ class BreweriesListViewController: UIViewController, ViperView {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -12,29 +12,32 @@ class BreweriesListCell: UITableViewCell {
     // MARK: Constant
     
     // MARK: Variable
+    lazy var labelContainerViews = [countryContainerView, stateContainerView, cityContainerView, streetContainerView, streetContainerView, phoneContainerView, websiteContainerView, mapContainerView]
+    
     
     // MARK: Outlet
     @IBOutlet var containerView: UIView!
-    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var countryContainerView: UIView!
+    @IBOutlet var stateContainerView: UIView!
+    @IBOutlet var cityContainerView: UIView!
+    @IBOutlet var streetContainerView: UIView!
+    @IBOutlet var phoneContainerView: UIView!
+    @IBOutlet var websiteContainerView: UIView!
+    @IBOutlet var mapContainerView: UIView!
+    
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var countryLabel: UILabel!
     @IBOutlet var countryNameLabel: UILabel!
-    @IBOutlet var stateContainerView: UIView!
     @IBOutlet var stateLabel: UILabel!
     @IBOutlet var stateNameLabel: UILabel!
-    @IBOutlet var cityContainerView: UIView!
     @IBOutlet var cityLabel: UILabel!
     @IBOutlet var cityNameLabel: UILabel!
-    @IBOutlet var streetContainerView: UIView!
     @IBOutlet var streenLabel: UILabel!
     @IBOutlet var streetNameLabel: UILabel!
-    @IBOutlet var phoneContainerView: UIView!
     @IBOutlet var phoneLabel: UILabel!
     @IBOutlet var phoneNameLabel: UILabel!
-    @IBOutlet var websiteContainerView: UIView!
     @IBOutlet var websiteLabel: UILabel!
     @IBOutlet var websiteNameLabel: UILabel!
-    @IBOutlet var mapContainerView: UIView!
     @IBOutlet var mapButton: UIButton!
     
     // MARK: Init
@@ -50,13 +53,18 @@ class BreweriesListCell: UITableViewCell {
         backgroundColor = .white
         configureContainerView()
         
-        nameLabel.text = brewery.name ?? ""
+        if let breweryName = brewery.name {
+            nameLabel.text = breweryName
+        }
+        
         countryNameLabel.text = brewery.country ?? ""
         stateNameLabel.text = brewery.state ?? ""
         cityNameLabel.text = brewery.city ?? ""
         streetNameLabel.text = brewery.street ?? ""
         phoneNameLabel.text = brewery.phone ?? ""
         websiteNameLabel.text = brewery.websiteURL ?? ""
+        
+        hideEmptyLabels()
     }
     
     func configureContainerView() {
@@ -65,6 +73,19 @@ class BreweriesListCell: UITableViewCell {
         containerView.layer.borderColor = UIColor.App.japaneseLaurel.cgColor
         containerView.layer.borderWidth = 1
         containerView.layer.cornerRadius = 20
+    }
+    
+    func hideEmptyLabels() {
+        let labels = [countryNameLabel, stateNameLabel, cityNameLabel, streetNameLabel, phoneNameLabel, websiteNameLabel]
+        labels.forEach {
+            let isLabelTextEmpty = $0?.text == ""
+            $0?.isHidden = isLabelTextEmpty
+        }
+        
+        labelContainerViews.compactMap { $0 }.forEach {
+            let isLabelContainsHiddenViews = !$0.subviews.filter { $0.isHidden == true }.isEmpty
+            $0.isHidden = isLabelContainsHiddenViews
+        }
     }
 }
 
