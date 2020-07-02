@@ -29,6 +29,7 @@ struct Constants {
     // MARK: ErrorDesctiptions
     
     // MARK: API
+    static let baseURL = "https://api.openbrewerydb.org"
     
     // MARK: Keys
 }

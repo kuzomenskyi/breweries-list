@@ -16,9 +16,7 @@ protocol BreweriesListViewProtocol: class {
 
 class BreweriesListViewController: UIViewController, ViperView {
     // MARK: Constant
-    var placeholderWidth: CGFloat { searchBar.frame.width / 3 }
-    
-    var searchBarffset: UIOffset { UIOffset(horizontal: (searchBar.frame.width - placeholderWidth) / 2, vertical: 0) }
+    let cellHeight: CGFloat = 270
     
     // MARK: Variable
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -26,6 +24,8 @@ class BreweriesListViewController: UIViewController, ViperView {
     }
     
     weak var presenter: BreweriesListPresenterProtocol!
+    var placeholderWidth: CGFloat { searchBar.frame.width / 3 }
+    var searchBarffset: UIOffset { UIOffset(horizontal: (searchBar.frame.width - placeholderWidth) / 2, vertical: 0) }
     
     // MARK: Outlet
     @IBOutlet var searchBar: UISearchBar!
@@ -37,12 +37,13 @@ class BreweriesListViewController: UIViewController, ViperView {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
+        presenter.viewDidLoad?()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        presenter.viewWillAppear?()
     }
     
     // MARK: Init
@@ -85,7 +86,9 @@ class BreweriesListViewController: UIViewController, ViperView {
 }
 
 extension BreweriesListViewController: BreweriesListViewProtocol {
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
 }
 
 // MARK: - UISearchBarDelegate

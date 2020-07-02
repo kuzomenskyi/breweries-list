@@ -42,7 +42,7 @@ class BreweriesDB: IBreweriesDB {
     init() {
         do {
             try db?.run(breweries.create { t in
-                t.column(id)
+                t.column(id, unique: true)
                 t.column(name)
                 t.column(breweryType)
                 t.column(street)

@@ -10,7 +10,7 @@ import Foundation
 import AppusViper
 
 protocol BreweriesListInteractorProtocol: class {
-
+    func getBreweries(breweryRequest: BreweryRequest, completion: @escaping (Result<[Brewery], BreweryError>) -> Void)
 }
 
 final class BreweriesListInteractor: ViperInteractor {
@@ -18,8 +18,12 @@ final class BreweriesListInteractor: ViperInteractor {
     
     // MARK: Variable
     weak var presenter: BreweriesListPresenterProtocol!
+    var breweriesManager: IBreweriesManager = BreweriesManager()
     
     // MARK: Function
+    func getBreweries(breweryRequest: BreweryRequest, completion: @escaping (Result<[Brewery], BreweryError>) -> Void) {
+        breweriesManager.getBreweries(breweryRequest: breweryRequest, completion: completion)
+    }
 }
 
 extension BreweriesListInteractor: BreweriesListInteractorProtocol {

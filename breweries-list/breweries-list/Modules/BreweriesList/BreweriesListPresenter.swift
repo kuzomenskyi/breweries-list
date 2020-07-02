@@ -9,7 +9,7 @@
 import Foundation
 import AppusViper
 
-protocol BreweriesListPresenterProtocol: TextValidator {
+protocol BreweriesListPresenterProtocol: TextValidator, IViewLifeCycle {
     var breweries: [Brewery] { get }
     var filteredBreweries: [Brewery] { get }
     var isSearching: Bool { get set }
@@ -26,20 +26,21 @@ final class BreweriesListPresenter: ViperPresenter {
     weak var router: BreweriesListRouterProtocol!
     var breweriesDB: IBreweriesDB = BreweriesDB()
     
-//    var breweries: [Brewery] {
-//        get {
-//            return breweriesDB.getBreweries()
-//        }
-//        set(newBreweries) {
-//            newBreweries.forEach { breweriesDB.insert(brewery: $0) }
-//            view.updateTableView()
-//        }
-//    }
-    var breweries: [Brewery] = [
-        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"]),
-        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"]),
-        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"])
-    ]
+    var breweries: [Brewery] {
+        get {
+            return breweriesDB.getBreweries()
+        }
+        set(newBreweries) {
+            newBreweries.forEach { breweriesDB.insert(brewery: $0) }
+            view.updateTableView()
+        }
+    }
+    #warning("Remove that after configuring fetching breweries using API")
+//    var breweries: [Brewery] = [
+//        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"]),
+//        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"]),
+//        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"])
+//    ]
     
     var filteredBreweries = [Brewery]() {
         didSet {
@@ -75,6 +76,17 @@ final class BreweriesListPresenter: ViperPresenter {
     }
     
     // MARK: Function
+    func viewDidLoad() {
+        let breweryRequest = BreweryRequest(httpMethod: .get, resourceURL: .listBreweries)
+        interactor.getBreweries(breweryRequest: breweryRequest, completion: { [unowned self] result in
+            switch result {
+            case .success(let breweries):
+                self.breweries = breweries
+            case .failure(let breweryError):
+                print("@@@@@ An error occured while fetching breweries:", breweryError)
+            }
+        })
+    }
     
     // MARK: - Private Function
     private func isSearchTextValid(_ searchText: String) -> Bool {

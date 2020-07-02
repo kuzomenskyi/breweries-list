@@ -11,6 +11,10 @@
 		CE09C6B924ACFAA400D8E092 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09C6B824ACFAA400D8E092 /* ConfigurableCell.swift */; };
 		CE09C6BE24ACFB7900D8E092 /* BreweriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09C6BC24ACFB7900D8E092 /* BreweriesListCell.swift */; };
 		CE09C6BF24ACFB7900D8E092 /* BreweriesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE09C6BD24ACFB7900D8E092 /* BreweriesListCell.xib */; };
+		CE1CE81624ADDF100051678A /* BreweryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE81524ADDF100051678A /* BreweryRequest.swift */; };
+		CE1CE81824ADE24B0051678A /* BreweriesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE81724ADE24B0051678A /* BreweriesManager.swift */; };
+		CE1CE81A24ADE2550051678A /* IBreweriesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE81924ADE2550051678A /* IBreweriesManager.swift */; };
+		CE1CE81D24ADE3800051678A /* BreweryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE81C24ADE3800051678A /* BreweryError.swift */; };
 		CE2FA47024ABAC7600336453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FA46F24ABAC7600336453 /* AppDelegate.swift */; };
 		CE2FA47224ABAC7600336453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FA47124ABAC7600336453 /* SceneDelegate.swift */; };
 		CE2FA47924ABAC7900336453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2FA47824ABAC7900336453 /* Assets.xcassets */; };
@@ -52,6 +56,10 @@
 		CE09C6B824ACFAA400D8E092 /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		CE09C6BC24ACFB7900D8E092 /* BreweriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListCell.swift; sourceTree = "<group>"; };
 		CE09C6BD24ACFB7900D8E092 /* BreweriesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreweriesListCell.xib; sourceTree = "<group>"; };
+		CE1CE81524ADDF100051678A /* BreweryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryRequest.swift; sourceTree = "<group>"; };
+		CE1CE81724ADE24B0051678A /* BreweriesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesManager.swift; sourceTree = "<group>"; };
+		CE1CE81924ADE2550051678A /* IBreweriesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBreweriesManager.swift; sourceTree = "<group>"; };
+		CE1CE81C24ADE3800051678A /* BreweryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryError.swift; sourceTree = "<group>"; };
 		CE2FA46C24ABAC7600336453 /* breweries-list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "breweries-list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2FA46F24ABAC7600336453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE2FA47124ABAC7600336453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +142,15 @@
 			path = BreweriesListCell;
 			sourceTree = "<group>";
 		};
+		CE1CE81B24ADE2580051678A /* BreweriesManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE1CE81924ADE2550051678A /* IBreweriesManager.swift */,
+				CE1CE81724ADE24B0051678A /* BreweriesManager.swift */,
+			);
+			path = BreweriesManager;
+			sourceTree = "<group>";
+		};
 		CE2FA46324ABAC7600336453 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB5BD1924ABF1C500CAE9C8 /* Brewery.swift */,
+				CE1CE81524ADDF100051678A /* BreweryRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB5BD1D24ABF51000CAE9C8 /* BreweriesDB */,
+				CE1CE81B24ADE2580051678A /* BreweriesManager */,
 			);
 			path = Sevices;
 			sourceTree = "<group>";
@@ -210,6 +229,7 @@
 				CEB5BD0524ABEB7400CAE9C8 /* Constants.swift */,
 				CEB5BD1B24ABF1F100CAE9C8 /* Aliases.swift */,
 				CE09C6B824ACFAA400D8E092 /* ConfigurableCell.swift */,
+				CE1CE81C24ADE3800051678A /* BreweryError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -448,6 +468,7 @@
 				CE2FA49824ABD63D00336453 /* SplashInteractor.swift in Sources */,
 				CE2FA4A124ABD6B000336453 /* BreweriesListPresenter.swift in Sources */,
 				CEB5BD1024ABEEB100CAE9C8 /* UINavigationController+StatusBar.swift in Sources */,
+				CE1CE81A24ADE2550051678A /* IBreweriesManager.swift in Sources */,
 				CE2FA4A224ABD6B000336453 /* BreweriesListRouter.swift in Sources */,
 				CE2FA4A924ABD93D00336453 /* R.generated.swift in Sources */,
 				CE09C6BE24ACFB7900D8E092 /* BreweriesListCell.swift in Sources */,
@@ -456,6 +477,7 @@
 				CE2FA47224ABAC7600336453 /* SceneDelegate.swift in Sources */,
 				CEB5BD1C24ABF1F100CAE9C8 /* Aliases.swift in Sources */,
 				CEB5BD0F24ABEEB100CAE9C8 /* UIColor+App.swift in Sources */,
+				CE1CE81824ADE24B0051678A /* BreweriesManager.swift in Sources */,
 				CE2FA49424ABD63D00336453 /* SplashPresenter.swift in Sources */,
 				CEB5BD2124ABF54500CAE9C8 /* IBreweriesDB.swift in Sources */,
 				CEB5BD1124ABEEB100CAE9C8 /* UISearchBar+TextFieldColor.swift in Sources */,
@@ -463,7 +485,9 @@
 				CEB5BD1424ABEF6000CAE9C8 /* TextValidator.swift in Sources */,
 				CE09C6B924ACFAA400D8E092 /* ConfigurableCell.swift in Sources */,
 				CE2FA49724ABD63D00336453 /* SplashViewController.swift in Sources */,
+				CE1CE81D24ADE3800051678A /* BreweryError.swift in Sources */,
 				CE2FA4A624ABD6B000336453 /* BreweriesList.swift in Sources */,
+				CE1CE81624ADDF100051678A /* BreweryRequest.swift in Sources */,
 				CE2FA4A424ABD6B000336453 /* BreweriesListViewController.swift in Sources */,
 				CEB5BD0624ABEB7400CAE9C8 /* Constants.swift in Sources */,
 			);
