@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		586546506F91278580EB8DC2 /* Pods_breweries_list.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C20FB574B936868684CDF5D /* Pods_breweries_list.framework */; };
+		CE09C6B924ACFAA400D8E092 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09C6B824ACFAA400D8E092 /* ConfigurableCell.swift */; };
+		CE09C6BE24ACFB7900D8E092 /* BreweriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09C6BC24ACFB7900D8E092 /* BreweriesListCell.swift */; };
+		CE09C6BF24ACFB7900D8E092 /* BreweriesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE09C6BD24ACFB7900D8E092 /* BreweriesListCell.xib */; };
 		CE2FA47024ABAC7600336453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FA46F24ABAC7600336453 /* AppDelegate.swift */; };
 		CE2FA47224ABAC7600336453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FA47124ABAC7600336453 /* SceneDelegate.swift */; };
 		CE2FA47924ABAC7900336453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2FA47824ABAC7900336453 /* Assets.xcassets */; };
@@ -46,6 +49,9 @@
 		6C20FB574B936868684CDF5D /* Pods_breweries_list.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_breweries_list.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		947B2FF8D0A8C1BEF2B463EC /* Pods-breweries-list.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-breweries-list.debug.xcconfig"; path = "Target Support Files/Pods-breweries-list/Pods-breweries-list.debug.xcconfig"; sourceTree = "<group>"; };
 		C463E928D423822B5B09B804 /* Pods-breweries-list.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-breweries-list.release.xcconfig"; path = "Target Support Files/Pods-breweries-list/Pods-breweries-list.release.xcconfig"; sourceTree = "<group>"; };
+		CE09C6B824ACFAA400D8E092 /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		CE09C6BC24ACFB7900D8E092 /* BreweriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListCell.swift; sourceTree = "<group>"; };
+		CE09C6BD24ACFB7900D8E092 /* BreweriesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreweriesListCell.xib; sourceTree = "<group>"; };
 		CE2FA46C24ABAC7600336453 /* breweries-list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "breweries-list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2FA46F24ABAC7600336453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE2FA47124ABAC7600336453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,23 @@
 				C463E928D423822B5B09B804 /* Pods-breweries-list.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE09C6BA24ACFB1600D8E092 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE09C6BB24ACFB5E00D8E092 /* BreweriesListCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE09C6BB24ACFB5E00D8E092 /* BreweriesListCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE09C6BC24ACFB7900D8E092 /* BreweriesListCell.swift */,
+				CE09C6BD24ACFB7900D8E092 /* BreweriesListCell.xib */,
+			);
+			path = BreweriesListCell;
 			sourceTree = "<group>";
 		};
 		CE2FA46324ABAC7600336453 = {
@@ -186,6 +209,7 @@
 				CEB5BD1624ABEF9200CAE9C8 /* ValidationRules.swift */,
 				CEB5BD0524ABEB7400CAE9C8 /* Constants.swift */,
 				CEB5BD1B24ABF1F100CAE9C8 /* Aliases.swift */,
+				CE09C6B824ACFAA400D8E092 /* ConfigurableCell.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -193,6 +217,7 @@
 		CE2FA48824ABACE600336453 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE09C6BA24ACFB1600D8E092 /* Cell */,
 				CE2FA47A24ABAC7900336453 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -334,6 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE09C6BF24ACFB7900D8E092 /* BreweriesListCell.xib in Resources */,
 				CE2FA4A324ABD6B000336453 /* BreweriesListViewController.storyboard in Resources */,
 				CE2FA47C24ABAC7900336453 /* LaunchScreen.storyboard in Resources */,
 				CE2FA49624ABD63D00336453 /* SplashViewController.storyboard in Resources */,
@@ -424,6 +450,7 @@
 				CEB5BD1024ABEEB100CAE9C8 /* UINavigationController+StatusBar.swift in Sources */,
 				CE2FA4A224ABD6B000336453 /* BreweriesListRouter.swift in Sources */,
 				CE2FA4A924ABD93D00336453 /* R.generated.swift in Sources */,
+				CE09C6BE24ACFB7900D8E092 /* BreweriesListCell.swift in Sources */,
 				CEB5BD0D24ABEEB100CAE9C8 /* UITextField+SetPlaceholder.swift in Sources */,
 				CE2FA49524ABD63D00336453 /* SplashRouter.swift in Sources */,
 				CE2FA47224ABAC7600336453 /* SceneDelegate.swift in Sources */,
@@ -434,6 +461,7 @@
 				CEB5BD1124ABEEB100CAE9C8 /* UISearchBar+TextFieldColor.swift in Sources */,
 				CEB5BD0E24ABEEB100CAE9C8 /* UIFont+CustomInitializer.swift in Sources */,
 				CEB5BD1424ABEF6000CAE9C8 /* TextValidator.swift in Sources */,
+				CE09C6B924ACFAA400D8E092 /* ConfigurableCell.swift in Sources */,
 				CE2FA49724ABD63D00336453 /* SplashViewController.swift in Sources */,
 				CE2FA4A624ABD6B000336453 /* BreweriesList.swift in Sources */,
 				CE2FA4A424ABD6B000336453 /* BreweriesListViewController.swift in Sources */,

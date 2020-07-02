@@ -16,6 +16,9 @@ protocol BreweriesListViewProtocol: class {
 
 class BreweriesListViewController: UIViewController, ViperView {
     // MARK: Constant
+    var placeholderWidth: CGFloat { searchBar.frame.width / 3 }
+    
+    var searchBarffset: UIOffset { UIOffset(horizontal: (searchBar.frame.width - placeholderWidth) / 2, vertical: 0) }
     
     // MARK: Variable
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -27,6 +30,8 @@ class BreweriesListViewController: UIViewController, ViperView {
     // MARK: Outlet
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var searchContainerView: UIView!
     
     // MARK: View Controller life cycle
     override func viewDidLoad() {
@@ -49,6 +54,10 @@ class BreweriesListViewController: UIViewController, ViperView {
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.title = Constants.breweriesListTitle
         configureSearchBar()
+        containerView.backgroundColor = UIColor.App.japaneseLaurel
+        searchContainerView.backgroundColor = UIColor.App.japaneseLaurel
+        searchBar.setPositionAdjustment(searchBarffset, for: .search)
+        configureTableView()
     }
     
     func configureSearchBar() {
@@ -56,6 +65,11 @@ class BreweriesListViewController: UIViewController, ViperView {
         searchBar.backgroundImage = UIImage()
         searchBar.setTextFieldColor(color: .white)
         searchBar.delegate = self
+    }
+    
+    func configureTableView() {
+        tableView.register(UINib(nibName: R.nib.breweriesListCell.name, bundle: R.nib.breweriesListCell.bundle), forCellReuseIdentifier: R.reuseIdentifier.breweriesListCell.identifier)
+        tableView.separatorStyle = .none
     }
     
     func updateTableView() {
@@ -73,6 +87,7 @@ extension BreweriesListViewController: BreweriesListViewProtocol {
 
 }
 
+// MARK: - UISearchBarDelegate
 extension BreweriesListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         presenter.isSearching = false
@@ -90,5 +105,47 @@ extension BreweriesListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(false)
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        let noOffset = UIOffset(horizontal: 0, vertical: 0)
+        searchBar.setPositionAdjustment(noOffset, for: .search)
+
+        return true
+    }
+
+
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setPositionAdjustment(searchBarffset, for: .search)
+
+        return true
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension BreweriesListViewController: UITableViewDelegate {
+    
+}
+
+// MARK: - UITableViewDataSource
+extension BreweriesListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.breweries.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentCellID = R.reuseIdentifier.breweriesListCell.identifier
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: currentCellID) as? ConfigurableCell else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = .red
+            print("@@@@@ Failed to deque cell with specified identifier for PreweriesList's table view")
+            return cell
+        }
+        
+        let isIndexValid = indexPath.row <= (presenter.breweries.count - 1)
+        guard !presenter.breweries.isEmpty, isIndexValid else { return cell }
+        cell.configure(withAny: presenter.breweries[indexPath.row])
+        return cell
     }
 }

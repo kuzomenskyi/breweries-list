@@ -26,15 +26,20 @@ final class BreweriesListPresenter: ViperPresenter {
     weak var router: BreweriesListRouterProtocol!
     var breweriesDB: IBreweriesDB = BreweriesDB()
     
-    var breweries: [Brewery] {
-        get {
-            return breweriesDB.getBreweries()
-        }
-        set(newBreweries) {
-            newBreweries.forEach { breweriesDB.insert(brewery: $0) }
-            view.updateTableView()
-        }
-    }
+//    var breweries: [Brewery] {
+//        get {
+//            return breweriesDB.getBreweries()
+//        }
+//        set(newBreweries) {
+//            newBreweries.forEach { breweriesDB.insert(brewery: $0) }
+//            view.updateTableView()
+//        }
+//    }
+    var breweries: [Brewery] = [
+        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"]),
+        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"]),
+        Brewery(id: 0, name: "name", breweryType: "breweryType", street: "street", city: "city", state: "state", postalCode: "postal code", country: "country", longitude: "longitude", latitude: "latitude", phone: "phone", websiteURL: "websiteURL", updatedAt: "updatedAt", tagList: ["tag1", "tag2"])
+    ]
     
     var filteredBreweries = [Brewery]() {
         didSet {

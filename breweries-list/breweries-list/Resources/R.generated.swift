@@ -168,6 +168,34 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  struct nib {
+    /// Nib `BreweriesListCell`.
+    static let breweriesListCell = _R.nib._BreweriesListCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "BreweriesListCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.breweriesListCell) instead")
+    static func breweriesListCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.breweriesListCell)
+    }
+    #endif
+
+    static func breweriesListCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BreweriesListCell? {
+      return R.nib.breweriesListCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BreweriesListCell
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `BreweriesListCell`.
+    static let breweriesListCell: Rswift.ReuseIdentifier<BreweriesListCell> = Rswift.ReuseIdentifier(identifier: "BreweriesListCell")
+
+    fileprivate init() {}
+  }
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()
@@ -187,6 +215,26 @@ struct _R: Rswift.Validatable {
     try storyboard.validate()
     #endif
   }
+
+  #if os(iOS) || os(tvOS)
+  struct nib {
+    struct _BreweriesListCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = BreweriesListCell
+
+      let bundle = R.hostingBundle
+      let identifier = "BreweriesListCell"
+      let name = "BreweriesListCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> BreweriesListCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BreweriesListCell
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
 
   #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {
