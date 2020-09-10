@@ -24,8 +24,6 @@ class BreweriesListViewController: UIViewController, ViperView {
     }
     
     weak var presenter: BreweriesListPresenterProtocol!
-    var placeholderWidth: CGFloat { searchBar.frame.width / 3 }
-    var searchBarffset: UIOffset { UIOffset(horizontal: (searchBar.frame.width - placeholderWidth) / 2, vertical: 0) }
     
     // MARK: Outlet
     @IBOutlet var searchBar: UISearchBar!
@@ -58,8 +56,13 @@ class BreweriesListViewController: UIViewController, ViperView {
         configureSearchBar()
         containerView.backgroundColor = UIColor.App.japaneseLaurel
         searchContainerView.backgroundColor = UIColor.App.japaneseLaurel
-        searchBar.setPositionAdjustment(searchBarffset, for: .search)
         configureTableView()
+        presenter.subscribeForScreenTransitionNotification(handler: screenTransitionHandler)
+    }
+    
+    /// Called immediately after UIDevice.orientationDidChangeNotification did sent
+    func screenTransitionHandler() {
+        
     }
     
     func configureSearchBar() {
@@ -109,20 +112,6 @@ extension BreweriesListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(false)
-    }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        let noOffset = UIOffset(horizontal: 0, vertical: 0)
-        searchBar.setPositionAdjustment(noOffset, for: .search)
-
-        return true
-    }
-
-
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.setPositionAdjustment(searchBarffset, for: .search)
-
-        return true
     }
 }
 

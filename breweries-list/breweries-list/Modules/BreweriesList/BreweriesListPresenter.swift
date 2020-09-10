@@ -13,8 +13,10 @@ protocol BreweriesListPresenterProtocol: TextValidator, IViewLifeCycle {
     var breweries: [Brewery] { get }
     var filteredBreweries: [Brewery] { get }
     var isSearching: Bool { get set }
+    var isPortrait: Bool { get }
     
     func startSearchEvent(searchText: String)
+    func subscribeForScreenTransitionNotification(handler: @escaping Completion)
 }
 
 final class BreweriesListPresenter: ViperPresenter {
@@ -53,6 +55,8 @@ final class BreweriesListPresenter: ViperPresenter {
             view.updateTableView()
         }
     }
+    
+    var isPortrait: Bool { return UIScreen.main.bounds.width < UIScreen.main.bounds.height }
     
     // MARK: Action
     func startSearchEvent(searchText: String) {
@@ -104,5 +108,7 @@ final class BreweriesListPresenter: ViperPresenter {
 }
 
 extension BreweriesListPresenter: BreweriesListPresenterProtocol {
-
+    func subscribeForScreenTransitionNotification(handler: @escaping Completion) {
+        interactor.subscribeForScreenTransitionNotification(handler: handler)
+    }
 }
